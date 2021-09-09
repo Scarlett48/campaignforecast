@@ -13,7 +13,7 @@ public class Campaign {
     private String campaignName;
     private String leaderName;
 
-    @OneToMany(mappedBy = "campaign", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "campaign")
     private Set<HiringDetails> details;
 
     protected Campaign(){}

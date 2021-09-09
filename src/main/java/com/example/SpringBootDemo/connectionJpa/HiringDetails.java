@@ -16,6 +16,7 @@ public class HiringDetails {
 
     @ManyToOne
     @JoinColumn(name = "request_id", insertable = false, updatable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Campaign campaign;
 
     public Long getRequestId() {
