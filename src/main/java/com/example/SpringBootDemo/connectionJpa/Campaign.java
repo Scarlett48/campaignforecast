@@ -1,6 +1,7 @@
 package com.example.SpringBootDemo.connectionJpa;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,8 +14,12 @@ public class Campaign {
     private String campaignName;
     private String leaderName;
 
-    @OneToMany(mappedBy = "campaign")
-    private Set<HiringDetails> details;
+    @OneToMany(
+            mappedBy = "campaign",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<HiringDetails> details;
 
     protected Campaign(){}
 

@@ -8,23 +8,31 @@ import javax.persistence.*;
 @Entity
 public class HiringDetails {
     @Id
-    @Column(name = "request_id")
-    private Long requestId;
+    @Column(name = "s_no")
+    private Long sno;
 
-    private int level;
-    private int hiringCount;
-
-    @ManyToOne
-    @JoinColumn(name = "request_id", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Campaign campaign;
 
-    public Long getRequestId() {
-        return requestId;
+    @Column(name = "head_count")
+    private int hiringCount;
+
+    @Column(name = "level")
+    private int level;
+
+    public HiringDetails(Long sno, int level, int hiringCount) {
+        this.sno = sno;
+        this.level = level;
+        this.hiringCount = hiringCount;
     }
 
-    public void setRequestId(Long requestId) {
-        this.requestId = requestId;
+    public Long getSno() {
+        return sno;
+    }
+
+    public void setSno(Long sno) {
+        this.sno = sno;
     }
 
     public int getLevel() {
